@@ -1,0 +1,65 @@
+{% extends "aplicacion/index.html" %}
+
+
+{% block titulo %}
+<h1 class="text-stroke mb-5 text-light">Goleadores</h1>
+{% endblock titulo %}
+
+
+{% block contenido %}
+
+<table>
+    <tr>
+        <td width="200"><h2>Goleadores</h2></td>
+        <td>
+        <a href="{% url 'Goleador_create' %}" class="btn btn-primary btn-sm">
+        <i class="fa fa-plus fa-lg" title="Crear"></i>
+        <span>Añadir nueva anotación</span>
+</a>
+
+</a>
+
+            <a href="{% url 'buscar_goleador' %}" class="btn btn-primary btn-sm">
+                <i class="fa fa-plus fa-lg" title="Crear"></i>
+                <span>Buscar jugador</span>
+            </a>           
+        </td>        
+        </td>        
+    </tr>
+</table>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Jugador</th>
+            <th>Goles</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for e in goleador_list  %}
+        <tr>
+            <td>{{ e.id }}</td>
+            <td>{{ e.nombre }}</td>
+            <td>{{ e.goles }}</td>
+            <td>
+                <a
+                  href="{% url 'Goleador_update' e.id %}"
+                  class="btn btn-primary"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  name="btn_eliminar_institucion" -->Editar puntaje
+                  <i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                </a>
+                <a
+                  href="{% url 'Goleador_delete' e.id %}"
+                  class="btn btn-danger"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  name="btn_eliminar_institucion"  -->Eliminar institucion
+                  <i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                </a>                
+            </td>  
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %}

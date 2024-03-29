@@ -1,0 +1,29 @@
+{% extends "aplicacion/index.html" %}
+
+
+{% block titulo %}
+<h1 class="display-4 fw-bolder text-white mb-2">Acerca de mi</h1>
+{% endblock titulo %}
+
+{% block contenido %}
+    <style>
+        .centrado {
+            text-align: center; /* Centrar el texto */
+        }
+
+        h2, p {
+            font-family: Arial, sans-serif; /* Fuente Arial o una fuente sans-serif genérica */
+            font-size: 16px; /* Tamaño de letra para h2 y párrafos */
+        }
+    </style>
+
+    <div class="centrado">
+        <h2>Soy Bareiro Nicolás, tengo 24 años y este se podría considerar mi primer paso en el mundo de la programación.</h2>
+        
+        <p>Soy gastronómico en la Ciudad de Buenos Aires, creo por fin haberme animado a estudiar lo que siempre me gustó y llamó mi atención.</p>
+        
+        <p>Este proyecto en particular busca simular una página para poder administrar y gestionar un torneo y/o liga.</p>
+    </div>
+{% endblock contenido %}
+
+

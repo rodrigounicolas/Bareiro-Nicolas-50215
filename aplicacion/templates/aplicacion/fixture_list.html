@@ -1,0 +1,62 @@
+{% extends "aplicacion/index.html" %}
+
+{% block titulo %}
+<h1 class="text-stroke mb-5 text-light">Fixtures</h1>    
+{% endblock titulo %}
+
+{% block contenido %}
+<table>
+    <tr>
+        <td width="200"><h2>Fixture</h2></td>
+        <td>
+        <a href="{% url 'fixture_create' %}" class="btn btn-primary btn-sm">
+        <i class="fa fa-plus fa-lg" title="Crear"></i>
+        <span>Añadir nuevo encuentro</span>
+        </a>
+        </a>
+            <a href="{% url 'buscar_fixture' %}" class="btn btn-primary btn-sm">
+                <i class="fa fa-plus fa-lg" title="Crear"></i>
+                <span>Buscar encuentro</span>
+            </a>           
+        </td>        
+        </td>        
+    </tr>
+</table>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Local</th>
+            <th>vs</th>
+            <th>Visitante</th>
+            <th>Direccion</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for e in fixture_list %}
+        <tr>
+            <td>{{ e.local }}</td>
+            <td>{{ e.vs }}</td>
+            <td>{{ e.visitante }}</td>
+            <td>{{ e.direccion }}</td>
+            <td>
+                <a
+                  href="{% url 'fixture_update' e.id %}"
+                  class="btn btn-primary"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  name="btn_eliminar_institucion" >Editar encuentro
+                  <i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                </a>
+                <a
+                  href="{% url 'fixture_delete' e.id %}"
+                  class="btn btn-danger"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  name="btn_eliminar_institucion"  >Eliminar encuentro
+                  <i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                </a>                
+            </td>  
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>   
+{% endblock contenido %}

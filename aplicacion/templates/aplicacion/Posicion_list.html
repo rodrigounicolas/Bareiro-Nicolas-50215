@@ -1,0 +1,62 @@
+{% extends "aplicacion/index.html" %}
+
+
+{% block titulo %}
+<h1 class="text-stroke mb-5 text-light">Posiciones</h1>
+{% endblock titulo %}
+
+
+{% block contenido %}
+
+<table>
+    <tr>
+        <td width="200"><h2>Posiciones</h2></td>
+        <td>
+            <a href="{% url 'Posicion_create' %}" class="btn btn-primary btn-sm">
+                <i class="fa fa-plus fa-lg" title="Crear"></i>
+                <span>Añadir nuevo puntaje</span>
+            </a>
+            <a href="{% url 'buscar_posicion' %}" class="btn btn-primary btn-sm">
+                <i class="fa fa-plus fa-lg" title="Crear"></i>
+                <span>Buscar institución</span>
+            </a>           
+        </td>        
+        </td>        
+    </tr>
+</table>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Posicion</th>
+            <th>Institucion</th>
+            <th>Puntos</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for e in posicion_list  %}
+        <tr>
+            <td>{{ e.id }}</td>
+            <td>{{ e.equipo }}</td>
+            <td>{{ e.puntos }}</td>
+            <td>
+                <a
+                  href="{% url 'Posicion_update' e.id %}"
+                  class="btn btn-primary"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  name="btn_eliminar_institucion" -->Editar puntaje
+                  <i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                </a>
+                <a
+                  href="{% url 'Posicion_delete' e.id %}"
+                  class="btn btn-danger"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  name="btn_eliminar_institucion"  -->Eliminar institucion
+                  <i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                </a>                
+            </td>  
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %}

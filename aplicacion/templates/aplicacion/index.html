@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="Bareiro Nicolas" />
+    <title>Federacion Metropolitana de Handball</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    .text-stroke {
+      -webkit-text-stroke-width: 1.5px; /* Ancho del contorno */
+      -webkit-text-stroke-color: black; /* Color del contorno */
+    }
+  </style>
+</head>
+<body>
+    <!-- Responsive navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5">
+        <div class="image-logo">
+        <img src="{% static 'images/logo.png' %}">
+        </div>
+            <a class="navbar-brand" href="{% url 'home' %}">Inicio</a>
+            
+            {% if user.is_authenticated %}
+            <div class="d-flex align-items-center justify-content-center">
+                <a class="navbar-brand me-3" href="{% url 'Institucion' %}">Instituciones</a>
+                <a class="navbar-brand me-3" href="{% url 'Posicion' %}">Posicion</a>
+                <a class="navbar-brand me-3" href="{% url 'goleadores' %}">Goleadores</a>
+                <a class="navbar-brand me-3" href="{% url 'fixtures' %}">Proximos Encuentros</a>
+                <p class="navbar-text text-success me-3">Hola {{ user.username }}</p>
+                <div class="text-center me-3">
+                    <a href="{% url 'agregar_avatar' %}" ><img src="{{ request.session.avatar }}" height="40px"/></a>
+                </div>
+                <a class="btn btn-success me-2" href="{% url 'perfil' %}">Perfil</a> <!-- Añadido 'me-2' para margen a la derecha -->
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Logout</button>
+                </form>
+            </div>
+
+            {% else %}
+                <a class="btn btn-primary me-3" href="{% url 'login' %}">Login</a>
+                <a class="btn btn-success" href="{% url 'registrar' %}">Registrarse</a>
+            {% endif %}
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    <!-- Header-->
+    <header class="py-5">
+        <div class="d-flex flex-column aling-items-center justify-content-center container px-5">
+                    <div class="d-flex flex-column aling-items-center text-center my-5" style="margin-top:5rem!important">
+                        {% block titulo %}
+                            <h1 class="text-stroke display-5 fw-bolder text-white mb-2 text-stroke">Fe.Me.Bal</h1>
+                            <p class="text-stroke lead text-white-50 mb-4">Federacion Metropolitana de Handball</p> 
+                        {% endblock titulo %}
+                    </div>
+        </div>
+    </header>
+    {% block contenido %}
+    {% endblock contenido %}
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container px-5 text-center">
+            <ul class="list-unstyled">
+                <li><a class="text-white" href="{% url 'acerca_de_mi' %}">Acerca de mi</a></li>
+            </ul>
+            <p class="m-0 text-white">Copyright &copy; Fe.Me.Bal</p>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- SB Forms JS-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+</html>

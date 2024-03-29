@@ -1,0 +1,28 @@
+{% extends "aplicacion/index.html" %}
+
+{% block titulo %}
+<h1 class="display-5 fw-bolder text-white mb-2">Tabla de Posiciones</h1>
+{% endblock titulo %}
+
+{% block contenido %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Posición</th>
+            <th>Institución</th>
+            <th>Puntos</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for c in posiciones %}
+        <tr>
+            <td>{{ c.posicion }}</td>
+            <td>{{ c.equipo }}</td>
+            <td>{{ c.puntos }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %}
+
+    

@@ -1,0 +1,35 @@
+{% extends "aplicacion/index.html" %}
+
+
+{% block titulo %}
+
+<h1 class="display-5 fw-bolder text-white mb-2">Fixtures</h1>    
+
+{% endblock titulo %}
+
+
+{% block contenido %}
+ <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Local</th>
+            <th>vs</th>
+            <th>Visitante</th>
+            <th>Direccion</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+    {% for c in fixtures %}
+        <tr>
+            <td>{{ c.local }}</td>
+            <td>{{ c.vs }}</td>
+            <td>{{ c.visitante }}</td>
+            <td>{{ c.direccion }}</td>
+        </tr>            
+    {% endfor %}
+    </tbody>
+</table>   
+
+{% endblock contenido %}
+    

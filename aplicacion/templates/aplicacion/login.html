@@ -1,0 +1,21 @@
+{% extends "aplicacion/index.html" %}
+
+
+{% block titulo %}
+<h1 class="text-stroke mb-5 text-light">Login</h1>
+
+{% endblock titulo %}
+
+{% block contenido %}
+<form action="" method="post">
+    {% csrf_token %}
+    <input class="form-control mb-2" required autocomplete="username" autofocus type="text" name="username"
+        placeholder="{{form.username.label}}" id="id_username">
+    <input class="form-control mb-2" required autocomplete="current-password" type="password" name="password"
+        placeholder="{{form.password.label}}" id="id_password">
+    {% comment %} <table>
+        {{ form.as_table }}
+    </table> {% endcomment %}
+    <input type="submit" value="Enviar">
+</form>
+{% endblock contenido %}
